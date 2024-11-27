@@ -22,16 +22,15 @@ struct Menu: View {
             Hero()
                 .zIndex(1)
                 .frame(height: 200)
+            VStack {
+                TextField("🔎 Search menu", text: $searchText)
+                        .textFieldStyle(.roundedBorder)
+                        .padding(.horizontal, 15)
+                        .cornerRadius(10)
+                        
+                        .padding(.bottom, 10)
+            }.background(Color.primary1)
             
-            NavigationView {
-                Color.clear
-                    .background(Color.highlight1)
-                
-                    .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode:.always),
-                                prompt: "search menu...")
-            }
-            .tint(.primary1)
-            .frame(height: 100)
             
             VStack(spacing: 5) {
                 HStack {
@@ -59,7 +58,9 @@ struct Menu: View {
                 (dishes: [Dish]) in
                 List {
                     ForEach(dishes, id:\.self) { dish in
-                        DisplayDish(dish)
+                        NavigationLink(destination: DetailItem(dish: dish)) {
+                            DisplayDish(dish)
+                        }
                     }
                 }.padding(.top, -25)
             }
@@ -122,7 +123,7 @@ struct Menu: View {
 }
 
 #Preview {
-    Menu()
+    Menu().environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
 }
 
 

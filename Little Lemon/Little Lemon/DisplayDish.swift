@@ -20,10 +20,15 @@ struct DisplayDish: View {
         let imageURL = URL(string: dish.image ?? "")
         HStack{
             
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 0) {
                 Text(title ?? "N/A")
                     .padding([.top, .bottom], 7)
                     .fontWeight(.bold)
+                Text(dish.descriptionOfDish ?? "n/a")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .foregroundColor(.primary1)
+                    .lineLimit(2)
+                    .font(.caption2)
                 Text("$\(price ?? "N/A")")
                     .padding([.top, .bottom], 7)
                     .italic()
@@ -54,5 +59,5 @@ struct DisplayDish: View {
 
 
 #Preview {
-    // DisplayDish()
+    DisplayDish(PersistenceController.oneDish())
 }

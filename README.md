@@ -1,2 +1,1 @@
-# LLCapstoneProject
-Coursera Capstone Project
+# littlelemon

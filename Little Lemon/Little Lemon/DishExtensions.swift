@@ -26,6 +26,7 @@ extension Dish {
             oneDish.title = menuItem.title
             oneDish.price = menuItem.price
             oneDish.image = menuItem.image
+            oneDish.descriptionOfDish = menuItem.descriptionOfDish
             oneDish.category = menuItem.category
         }
     }

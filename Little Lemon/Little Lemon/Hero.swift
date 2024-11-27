@@ -50,7 +50,7 @@ struct Hero: View {
                         .frame(maxHeight: 150)
                     
                     
-                } .padding(.vertical, 10)
+                } .padding(.vertical, 5)
                 
                 Spacer()
             }
